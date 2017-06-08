@@ -17,6 +17,11 @@ import com.zyx.util.JsonTool;
 import com.zyx.util.Tools;
 import com.zyx.web.WebController;
 
+/**
+ * 用户管理
+ * @author Administrator
+ *
+ */
 @Controller
 public class UserController extends WebController {
 
@@ -27,6 +32,9 @@ public class UserController extends WebController {
 	@Autowired
 	private DictionariesService dictionariesService;
 	
+	/*
+	 * 查询用户列表
+	 */
 	@RequestMapping("/userList")
 	public String list(Map<String, Object> map) throws Exception{
 		PageData pd = this.getPageData();
@@ -40,6 +48,9 @@ public class UserController extends WebController {
 		return "/system/user/user_list";
 	}
 	
+	/*
+	 * 用户权限
+	 */
 	@RequestMapping("/userRights")
 	public String permission(Map<String, Object> map)throws Exception{
 		PageData pd = getPageData();
@@ -53,6 +64,9 @@ public class UserController extends WebController {
 		return "/system/user/user_tree";
 	}
 	
+	/*
+	 * 用户角色
+	 */
 	@RequestMapping("/userRole")
 	public String userRole(Map<String, Object> map) throws Exception{
 		PageData pd = getPageData();
@@ -62,12 +76,18 @@ public class UserController extends WebController {
 		return "/system/user/role_tree";
 	}
 	
+	/*
+	 * 添加用户
+	 */
 	@RequestMapping("/userSave")
 	@ResponseBody
 	public String save(Map<String, Object> map) throws Exception{
 		return userService.saveService(getPageData());
 	}
 	
+	/*
+	 * 修改用户
+	 */
 	@RequestMapping("/userUpdate")
 	@ResponseBody
 	public String update(Map<String, Object> map) throws Exception{
@@ -80,6 +100,9 @@ public class UserController extends WebController {
 		return userService.updateUserInfo(getPageData());
 	}
 	
+	/*
+	 * 修改密码
+	 */
 	@RequestMapping("/userPasswdUpdate")
 	@ResponseBody
 	public String passwdUpdate(Map<String, Object> map) throws Exception{
